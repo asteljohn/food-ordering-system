@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Food Item</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background: linear-gradient(to right, #ff512f, #dd2476);
+        }
+
+        .container{
+            width:400px;
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.3);
+            text-align:center;
+        }
+
+        .container h2{
+            color:#ff5722;
+            margin-bottom:25px;
+            font-size:32px;
+        }
+
+        .food-icon{
+            font-size:60px;
+            margin-bottom:15px;
+        }
+
+        .input-box{
+            width:100%;
+            padding:14px;
+            margin:12px 0;
+            border:1px solid #ccc;
+            border-radius:10px;
+            font-size:16px;
+            outline:none;
+            transition:0.3s;
+        }
+
+        .input-box:focus{
+            border-color:#ff5722;
+            box-shadow:0 0 8px rgba(255,87,34,0.5);
+        }
+
+        .btn{
+            width:100%;
+            padding:14px;
+            background:#ff5722;
+            color:white;
+            border:none;
+            border-radius:10px;
+            font-size:18px;
+            cursor:pointer;
+            transition:0.3s;
+            margin-top:10px;
+        }
+
+        .btn:hover{
+            background:#e64a19;
+            transform:scale(1.05);
+        }
+
+        .note{
+            margin-top:15px;
+            color:gray;
+            font-size:14px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="food-icon">🍕</div>
+
+        <h2>Add Food Item</h2>
+
+        <form action="addfood.php" method="POST">
+
+            <input type="text"
+                   name="food_name"
+                   placeholder="Enter Food Name"
+                   class="input-box"
+                   required>
+
+            <input type="number"
+                   name="price"
+                   placeholder="Enter Price"
+                   class="input-box"
+                   required>
+
+            <input type="text"
+                   name="category"
+                   placeholder="Enter Category"
+                   class="input-box"
+                   required>
+
+            <button type="submit" class="btn">
+                Add Food
+            </button>
+
+        </form>
+
+        <p class="note">
+            Admin Panel - Food Management
+        </p>
+
+    </div>
+
+</body>
+</html>

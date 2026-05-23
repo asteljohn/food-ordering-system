@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background: linear-gradient(to right, #ff6b6b, #ffb347);
+            padding:40px;
+        }
+
+        h2{
+            text-align:center;
+            color:white;
+            margin-bottom:30px;
+            font-size:40px;
+        }
+
+        .menu-container{
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap:25px;
+        }
+
+        .food-card{
+            background:white;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 8px 20px rgba(0,0,0,0.2);
+            transition:0.3s;
+        }
+
+        .food-card:hover{
+            transform:translateY(-10px);
+        }
+
+        .food-icon{
+            font-size:60px;
+            margin-bottom:15px;
+        }
+
+        .food-card h3{
+            color:#ff5722;
+            margin-bottom:10px;
+            font-size:28px;
+        }
+
+        .price{
+            font-size:22px;
+            color:#444;
+            margin-bottom:20px;
+        }
+
+        .btn{
+            background:#ff5722;
+            color:white;
+            border:none;
+            padding:12px 20px;
+            border-radius:10px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#e64a19;
+            transform:scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🍴 Food Menu</h2>
+
+    <div class="menu-container">
+
+        <div class="food-card">
+            <div class="food-icon">🍔</div>
+            <h3>Burger</h3>
+            <p class="price">₹120</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🍕</div>
+            <h3>Pizza</h3>
+            <p class="price">₹250</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🌯</div>
+            <h3>Shawarma</h3>
+            <p class="price">₹290</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🍛</div>
+            <h3>Biriyani</h3>
+            <p class="price">₹150</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🍟</div>
+            <h3>French Fries</h3>
+            <p class="price">₹90</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🥤</div>
+            <h3>Cold Coffee</h3>
+            <p class="price">₹110</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🍜</div>
+            <h3>Noodles</h3>
+            <p class="price">₹180</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🌮</div>
+            <h3>Tacos</h3>
+            <p class="price">₹200</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🍗</div>
+            <h3>Fried Chicken</h3>
+            <p class="price">₹240</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🥪</div>
+            <h3>Sandwich</h3>
+            <p class="price">₹130</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🍦</div>
+            <h3>Ice Cream</h3>
+            <p class="price">₹80</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <div class="food-icon">🍩</div>
+            <h3>Donut</h3>
+            <p class="price">₹70</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+    </div>
+
+</body>
+</html>

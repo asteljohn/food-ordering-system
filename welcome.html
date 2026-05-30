@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome | Rio Ordering</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background: linear-gradient(135deg,#ff512f,#dd2476);
+            height:100vh;
+        }
+
+        .top-right{
+            position:absolute;
+            top:20px;
+            right:30px;
+        }
+
+        .admin-btn{
+            background:#fff;
+            color:#ff512f;
+            padding:12px 22px;
+            text-decoration:none;
+            border-radius:10px;
+            font-weight:bold;
+        }
+
+        .container{
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            text-align:center;
+        }
+
+        h1{
+            font-size:60px;
+            margin-bottom:10px;
+        }
+
+        p{
+            font-size:24px;
+            margin-bottom:35px;
+        }
+
+        .user-btn{
+            background:white;
+            color:#dd2476;
+            padding:14px 35px;
+            text-decoration:none;
+            border-radius:10px;
+            font-size:20px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-right">
+    <a href="/food-ordering-system/admin/admin_login.php" class="admin-btn">
+        Admin Login
+    </a>
+</div>
+
+<div class="container">
+    <h1>Welcome to Rio Ordering</h1>
+    <p>Fresh food delivered fast to your doorstep</p>
+
+    <a href="/food-ordering-system/templates/index.html" class="user-btn">
+        User Login
+    </a>
+</div>
+
+</body>
+</html>

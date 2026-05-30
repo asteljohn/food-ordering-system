@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background: linear-gradient(to right, #ff6b6b, #ffb347);
+    min-height:100vh;
+    padding:40px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#ff5722;
+    margin-bottom:20px;
+    font-size:36px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff5f0;
+    margin-bottom:15px;
+    padding:15px 20px;
+    border-radius:12px;
+    font-size:20px;
+}
+
+.total{
+    text-align:right;
+    font-size:28px;
+    font-weight:bold;
+    margin-top:20px;
+    color:#333;
+}
+
+.btn{
+    width:100%;
+    margin-top:25px;
+    background:#ff5722;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:12px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#e64a19;
+}
+
+.empty{
+    text-align:center;
+    color:gray;
+    font-size:22px;
+    margin-top:20px;
+}
+
+.back-link{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    color:#ff5722;
+    font-weight:bold;
+}
+
+#success-message{
+    text-align:center;
+    font-size:24px;
+    color:green;
+    margin-top:20px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🛒 Your Cart</h2>
+
+    <div id="cart-items"></div>
+
+    <div class="total" id="total">Total: ₹0</div>
+
+    <button class="btn" onclick="placeOrder()">Place Order</button>
+
+    <p id="success-message"></p>
+
+    <a href="menu.php" class="back-link">⬅ Back to Menu</a>
+</div>
+
+<script>
+function loadCart(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartItems = document.getElementById("cart-items");
+    let total = 0;
+
+    cartItems.innerHTML = "";
+
+    if(cart.length === 0){
+        cartItems.innerHTML =
+        "<p class='empty'>Your cart is empty 🍽️</p>";
+    } else {
+
+        cart.forEach(item => {
+
+            let qty = item.qty || 1;
+            let itemTotal = item.price * qty;
+
+            total += itemTotal;
+
+            cartItems.innerHTML += `
+                <div class="cart-item">
+                    <span>${item.name} x ${qty}</span>
+                    <span>₹${itemTotal}</span>
+                </div>
+            `;
+        });
+
+    }
+
+    document.getElementById("total").innerText =
+    "Total: ₹" + total;
+}
+
+async function placeOrder(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if(cart.length === 0){
+        alert("Cart is empty");
+        return;
+    }
+
+    // Automatically set a default name or remove prompt
+    let customerName = localStorage.getItem("customerName") || "Guest";
+
+    for (let item of cart) {
+
+        let qty = item.qty || 1;
+        let total = item.price * qty;
+
+        await fetch("../place-order.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body:
+                "customer_name=" + encodeURIComponent(customerName) +
+                "&food_name=" + encodeURIComponent(item.name) +
+                "&quantity=" + qty +
+                "&total_price=" + total
+        });
+    }
+
+    // Show order success message on page
+    document.getElementById("success-message").innerText = "🎉 Order Placed Successfully!";
+
+    localStorage.removeItem("cart");
+
+    // Optionally redirect after few seconds
+    // setTimeout(() => window.location.href = "../index.php", 3000);
+}
+
+loadCart();
+</script>
+
+</body>
+</html>
